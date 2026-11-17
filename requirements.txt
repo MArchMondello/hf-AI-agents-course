@@ -1,0 +1,5 @@
+# Agent framework by Hugging Face, with the LiteLLM extra (needed by LiteLLMModel)
+smolagents[litellm]==1.26.0
+
+# Bridge to many LLM providers, including the local Ollama server
+litellm==1.109.1

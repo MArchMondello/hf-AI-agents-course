@@ -1,0 +1,13 @@
+# Python virtual environment (rebuilt from requirements.txt)
+.venv/
+
+# Python bytecode cache
+__pycache__/
+*.pyc
+
+# Secrets: API keys, tokens
+.env
+
+# Private notes and local Claude Code settings (safety net)
+CLAUDE.md
+.claude/
