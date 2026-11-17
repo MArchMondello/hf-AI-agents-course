@@ -1,4 +1,4 @@
-# first_agent.py — your first agent, running on local Qwen
+# onboarding.py — your first agent, running on local Qwen
 
 from smolagents import CodeAgent, LiteLLMModel
 
