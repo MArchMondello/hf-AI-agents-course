@@ -11,3 +11,6 @@ __pycache__/
 # Private notes and local Claude Code settings (safety net)
 CLAUDE.md
 .claude/
+
+# Official HF course notebooks (separate clone, not our code)
+agents-course/
