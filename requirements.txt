@@ -6,3 +6,9 @@ litellm==1.109.1
 
 # Official SDK for the Claude API (BACKEND = "claude" in 1.dummy_agent_library.ipynb)
 anthropic==2.10.0
+
+# Reads API keys from the .env file (BACKEND = "claude" / "HF" in 1.dummy_agent_library.ipynb)
+python-dotenv==1.2.4
+
+# Jupyter kernel: lets VS Code / Jupyter run the notebook with this .venv
+ipykernel==7.4.0
