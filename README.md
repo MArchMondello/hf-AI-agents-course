@@ -10,7 +10,7 @@ Paid engines (Claude API, Hugging Face Inference API) are optional, one line awa
 ```
 hf-AI-agents-course/
 ├── 0.onboarding.py               ← first agent: smolagents CodeAgent on local Qwen
-├── 1.dummy_agent_library.ipynb   ← an agent from scratch: system prompt + stop word + a Python function
+├── 1.weather-agent-lab.ipynb     ← an agent from scratch, up to a real weather tool and a hand-made agent loop
 ├── brain/                        ← cheat sheets (CS) and lessons learned (LL), one per topic
 ├── probe/                        ← raw model outputs of the experiments, as JSON
 └── requirements.txt
@@ -19,7 +19,7 @@ hf-AI-agents-course/
 | File | What it does |
 | --- | --- |
 | [`0.onboarding.py`](0.onboarding.py) | A `CodeAgent` with no tools: it answers by writing and running Python (10th Fibonacci number, primes below 100). |
-| [`1.dummy_agent_library.ipynb`](1.dummy_agent_library.ipynb) | The course's "dummy agent", rebuilt with **three interchangeable engines** (local Qwen, Claude, Hugging Face) behind one `chat()` function. Plus a **disrespectful agent** used for the experiments below. |
+| [`1.weather-agent-lab.ipynb`](1.weather-agent-lab.ipynb) | The course's "dummy agent", rebuilt with **three interchangeable engines** (local Qwen, Claude, Hugging Face) behind one `chat()` function. Plus a **disrespectful agent** used for the experiments below, and **Maresciallo Costa**: a weather agent with a real tool (`WeatherNow`, live data from [Open-Meteo](https://open-meteo.com), no API key) and a hand-made agent loop. |
 
 ## Experiments: can a system prompt make an agent lie?
 
@@ -33,6 +33,19 @@ Each setup ran 10 times on Qwen2 7B. The raw outputs are in [`probe/`](probe/).
 | Same, plus `stop=["Observation:"]` | 0 / 10 | 1 / 10 | `stop` blocks the forged evidence, not the intent: [1.3](brain/1.3-LL-lie-order-next-to-observation.md) |
 
 What I take from it: **tool output is data, never instructions**, and an agent loop needs `stop`, input validation and `max_steps`.
+
+## Experiments: what does a persona do to the answers?
+
+Maresciallo Costa is a calm TV weatherman, asked to open and close the Final Answer with two fixed phrases.
+Weather frozen, 10 runs per variant on Qwen2 7B. Main probe on Castell'Umberto (Sicily), backup on Lyon:
+
+| Setup | Phrases present (Castell'Umberto / Lyon) | Numbers right | In Italian | Lesson |
+| --- | --- | --- | --- | --- |
+| Phrases in the template line + a tone rule | **1–2 / 10** vs **7–8 / 10** | 20 / 20 | 8 / 20 | same prompt, another city, another result: [1.4](brain/1.4-LL-weather-agent-persona-chat-template.md) |
+| Same, **without** the tone rule | 0 / 10 vs 0 / 10 | 20 / 20 | 0 / 20 | a template line shows, a rule commands: [1.4](brain/1.4-LL-weather-agent-persona-chat-template.md) |
+| Opening and closing swapped | 1–5 / 10 vs 1–2 / 10 | 20 / 20 | 5 / 20 | position effects: inconclusive: [1.4](brain/1.4-LL-weather-agent-persona-chat-template.md) |
+
+What I take from it: **the prompt asks, the code guarantees**, a prompt validated on one input is not validated, and the model reads one string (the chat template), not a list of messages.
 
 ## `brain/`: what I learned, in reusable form
 
@@ -49,6 +62,7 @@ What I take from it: **tool output is data, never instructions**, and an agent l
 | [1.1](brain/1.1-LL-dummy-agent-temperature.md) | LL | Temperature, memory and invented Observations |
 | [1.2](brain/1.2-LL-the-liar-agent.md) | LL | The liar agent |
 | [1.3](brain/1.3-LL-lie-order-next-to-observation.md) | LL | Proximity, alibis and prompt injection |
+| [1.4](brain/1.4-LL-weather-agent-persona-chat-template.md) | LL | A real tool, a persona and the chat template |
 
 **CS** = cheat sheet (commands, workflows, errors → fixes). **LL** = lessons learned (an experiment and what it taught me).
 
@@ -73,7 +87,7 @@ pip install -r requirements.txt
 python 0.onboarding.py
 ```
 
-For the notebook, open `1.dummy_agent_library.ipynb` in VS Code or Jupyter and pick the `.venv` kernel.
+For the notebook, open `1.weather-agent-lab.ipynb` in VS Code or Jupyter and pick the `.venv` kernel.
 `BACKEND = "local"` needs nothing else. For `"claude"` or `"HF"`, create a `.env` file (git-ignored) with `ANTHROPIC_API_KEY=...` or `HF_TOKEN=...`.
 
 ## About me

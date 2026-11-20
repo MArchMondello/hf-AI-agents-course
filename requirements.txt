@@ -4,10 +4,10 @@ smolagents[litellm]==1.26.0
 # Bridge to many LLM providers, including the local Ollama server
 litellm==1.109.1
 
-# Official SDK for the Claude API (BACKEND = "claude" in 1.dummy_agent_library.ipynb)
+# Official SDK for the Claude API (BACKEND = "claude" in 1.weather-agent-lab.ipynb)
 anthropic==2.10.0
 
-# Reads API keys from the .env file (BACKEND = "claude" / "HF" in 1.dummy_agent_library.ipynb)
+# Reads API keys from the .env file (BACKEND = "claude" / "HF" in 1.weather-agent-lab.ipynb)
 python-dotenv==1.2.4
 
 # Jupyter kernel: lets VS Code / Jupyter run the notebook with this .venv
