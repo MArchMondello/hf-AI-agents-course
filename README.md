@@ -58,6 +58,7 @@ What I take from it: **the prompt asks, the code guarantees**, a prompt validate
 | [0.5](brain/0.5-CS-github-publish-project.md) | CS | Publishing a project on GitHub |
 | [0.6](brain/0.6-CS-markdown.md) | CS | Markdown |
 | [0.7](brain/0.7-CS-course-notebooks-jupyter.md) | CS | Course notebooks in Jupyter |
+| [0.8](brain/0.8-CS-env-secrets.md) | CS | Secrets in a `.env` file, shared by all projects |
 | [1.0](brain/1.0-CS-agents.md) | CS | What an agent is |
 | [1.1](brain/1.1-LL-dummy-agent-temperature.md) | LL | Temperature, memory and invented Observations |
 | [1.2](brain/1.2-LL-the-liar-agent.md) | LL | The liar agent |
@@ -87,7 +88,7 @@ pip install -r requirements.txt
 ```
 
 Then open the notebooks (`0.onboarding.ipynb`, `1.weather-agent-lab.ipynb`) in VS Code or Jupyter and pick the `.venv` kernel.
-`BACKEND = "local"` needs nothing else. For `"claude"` or `"HF"`, create a `.env` file (git-ignored) with `ANTHROPIC_API_KEY=...` or `HF_TOKEN=...`.
+`BACKEND = "local"` needs nothing else. For `"claude"` or `"HF"`, put `ANTHROPIC_API_KEY=...` or `HF_TOKEN_READ=...` in a `.env` file: in the repo root (git-ignored) or in any parent folder, since `load_dotenv()` searches upwards. Mine lives one level up, outside every repo: see [0.8](brain/0.8-CS-env-secrets.md).
 
 ## About me
 
