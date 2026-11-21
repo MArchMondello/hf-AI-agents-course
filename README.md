@@ -9,6 +9,7 @@ Paid engines (Claude API, Hugging Face Inference API) are optional, one line awa
 
 ```
 hf-AI-agents-course/
+├── .env.example                  ← names of the secrets (no values): copy to .env
 ├── 0.onboarding.ipynb            ← first agent: smolagents CodeAgent on local Qwen, its guards and sandboxes
 ├── 1.weather-agent-lab.ipynb     ← an agent from scratch, up to a real weather tool and a hand-made agent loop
 ├── brain/                        ← cheat sheets (CS) and lessons learned (LL), one per topic
@@ -85,10 +86,13 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
+# --- 4. Secrets: copy the template, then fill in the values in your editor ---
+cp .env.example .env
+
 ```
 
 Then open the notebooks (`0.onboarding.ipynb`, `1.weather-agent-lab.ipynb`) in VS Code or Jupyter and pick the `.venv` kernel.
-`BACKEND = "local"` needs nothing else. For `"claude"` or `"HF"`, put `ANTHROPIC_API_KEY=...` or `HF_TOKEN_READ=...` in a `.env` file: in the repo root (git-ignored) or in any parent folder, since `load_dotenv()` searches upwards. Mine lives one level up, outside every repo: see [0.8](brain/0.8-CS-env-secrets.md).
+`BACKEND = "local"` needs nothing else. For `"claude"` or `"HF"`, fill in `ANTHROPIC_API_KEY` or `HF_TOKEN_READ` in `.env` ([`.env.example`](.env.example) lists every name). The `.env` can stay in the repo root (git-ignored) or move to any parent folder, since `load_dotenv()` searches upwards. Mine lives one level up, outside every repo: see [0.8](brain/0.8-CS-env-secrets.md).
 
 ## About me
 
