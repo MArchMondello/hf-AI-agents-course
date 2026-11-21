@@ -68,6 +68,7 @@ What I take from it: **the prompt asks, the code guarantees**, a prompt validate
 | [1.4](brain/1.4-LL-weather-agent-persona-chat-template.md) | LL | A real tool, a persona and the chat template |
 | [1.5](brain/1.5-CS-sandbox-approaches.md) | CS | Sandbox approaches for code agents |
 | [1.6](brain/1.6-CS-hf-space-first-agent.md) | CS | A Hugging Face Space: the First Agent Template, and why it only said "Error" |
+| [1.7](brain/1.7-CS-hf-contribute-upstream.md) | CS | Contributing a fix to someone else's Hugging Face repo: PR + discussion, no clone |
 
 **CS** = cheat sheet (commands, workflows, errors → fixes). **LL** = lessons learned (an experiment and what it taught me).
 
