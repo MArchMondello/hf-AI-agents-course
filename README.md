@@ -5,6 +5,14 @@ My agents and experiments, built while following the [Hugging Face AI Agents Cou
 The default engine is **local and free**: an open model (`qwen2:7b`) served by [Ollama](https://ollama.com) on my own machine.
 Paid engines (Claude API, Hugging Face Inference API) are optional, one line away.
 
+## Live demo: the repo guide agent
+
+**[Try it on Hugging Face Spaces](https://huggingface.co/spaces/MArcoMondelloMBAMArch/First_Agent_Template)**: ask it anything. Questions about agents, LLMs or dev setup are answered from this repo's [`brain/`](brain/) notes, with a link to the note; every answer ends with a live signature (course coverage, notes, experiments, stars).
+
+- A smolagents `ToolCallingAgent` (Llama 3.3 70B) with 8 read-only tools: it never runs code written by the model. Why: [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md).
+- Limits: anonymous, 25 questions/day in total (max 5 per visitor); signed in with Hugging Face, 20/day billed to your own account. Each question is independent, max 500 characters.
+- How it was built, with the live diff against the course template: [`my-agents/`](my-agents/ROSTER.md).
+
 ## What's inside
 
 ```
@@ -13,6 +21,7 @@ hf-AI-agents-course/
 ├── 0.onboarding.ipynb            ← first agent: smolagents CodeAgent on local Qwen, its guards and sandboxes
 ├── 1.weather-agent-lab.ipynb     ← an agent from scratch, up to a real weather tool and a hand-made agent loop
 ├── brain/                        ← cheat sheets (CS) and lessons learned (LL), one per topic
+├── my-agents/                    ← one folder per deployed agent: prompt, plan, notebook (ROSTER.md = the index)
 ├── probe/                        ← raw model outputs of the experiments, as JSON
 └── requirements.txt
 ```
@@ -21,6 +30,7 @@ hf-AI-agents-course/
 | --- | --- |
 | [`0.onboarding.ipynb`](0.onboarding.ipynb) | A `CodeAgent` with no tools: it answers by writing and running Python (10th Fibonacci number, primes below 100). Then what stops that code from doing damage: the `LocalPythonExecutor` tested against harmful commands, and the sandbox options (Blaxel, E2B, Modal, Docker). |
 | [`1.weather-agent-lab.ipynb`](1.weather-agent-lab.ipynb) | The course's "dummy agent", rebuilt with **three interchangeable engines** (local Qwen, Claude, Hugging Face) behind one `chat()` function. Plus a **disrespectful agent** used for the experiments below, and **Maresciallo Costa**: a weather agent with a real tool (`WeatherNow`, live data from [Open-Meteo](https://open-meteo.com), no API key) and a hand-made agent loop. |
+| [`my-agents/`](my-agents/ROSTER.md) | The agents I deploy, one folder each. The code lives in the Space; here: the original request, the approved plan and a notebook that computes the diff against the course template **live**. First one: the repo guide agent above. |
 
 ## Experiments: can a system prompt make an agent lie?
 
@@ -48,6 +58,18 @@ Weather frozen, 10 runs per variant on Qwen2 7B. Main probe on Castell'Umberto (
 
 What I take from it: **the prompt asks, the code guarantees**, a prompt validated on one input is not validated, and the model reads one string (the chat template), not a list of messages.
 
+## Experiments: is a public agent safe, and which model can call tools?
+
+Before going live, the repo guide agent went through two adversarial reviews (fake token, fake model writing the attack) and one real tool-call probe per candidate model:
+
+| Test | Result | Lesson |
+| --- | --- | --- |
+| Review #1 on the course's `CodeAgent` | model-written code read the Space secrets in one line: switched to `ToolCallingAgent` | [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md) |
+| Review #2 on the `ToolCallingAgent` | no critical/high; added a per-visitor cap and an Origin check | [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md) |
+| Tool calls: Qwen2.5-Coder-32B / Qwen2.5-72B / Qwen3-32B / Llama-3.3-70B | 404 / 500 / invalid JSON / **3 of 3 correct** | [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md) |
+
+What I take from it: **on a public page, a `CodeAgent` needs a real sandbox**; who pays is decided in code before the model runs; pin the provider.
+
 ## `brain/`: what I learned, in reusable form
 
 | # | Type | Topic |
@@ -69,6 +91,7 @@ What I take from it: **the prompt asks, the code guarantees**, a prompt validate
 | [1.5](brain/1.5-CS-sandbox-approaches.md) | CS | Sandbox approaches for code agents |
 | [1.6](brain/1.6-CS-hf-space-first-agent.md) | CS | A Hugging Face Space: the First Agent Template, and why it only said "Error" |
 | [1.7](brain/1.7-LL-helping-others-upstream-fix.md) | LL | Helping others: an upstream fix, and the review that made it right |
+| [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md) | LL | A public agent: CodeAgent is not a sandbox, and who pays |
 
 **CS** = cheat sheet (commands, workflows, errors → fixes). **LL** = lessons learned (an experiment and what it taught me).
 
