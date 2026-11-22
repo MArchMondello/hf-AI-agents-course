@@ -5,11 +5,11 @@ My agents and experiments, built while following the [Hugging Face AI Agents Cou
 The default engine is **local and free**: an open model (`qwen2:7b`) served by [Ollama](https://ollama.com) on my own machine.
 Paid engines (Claude API, Hugging Face Inference API) are optional, one line away.
 
-## Live demo: the repo guide agent
+## Live demo: the AI Agents Course Companion
 
-**[Try it on Hugging Face Spaces](https://huggingface.co/spaces/MArcoMondelloMBAMArch/First_Agent_Template)**: ask it anything. Questions about agents, LLMs or dev setup are answered from this repo's [`brain/`](brain/) notes, with a link to the note; every answer ends with a live signature (course coverage, notes, experiments, stars).
+**[Try it on Hugging Face Spaces](https://huggingface.co/spaces/MArcoMondelloMBAMArch/First_Agent_Template)**: ask it anything. Questions about agents, LLMs or dev setup are answered from this repo's [`brain/`](brain/) notes, with a link to the note; it can also describe the repo and its results; every answer ends with a live signature (course coverage, notes, experiments, notebooks, stars).
 
-- A smolagents `ToolCallingAgent` (Llama 3.3 70B) with 8 read-only tools: it never runs code written by the model. Why: [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md).
+- A smolagents `ToolCallingAgent` (Llama 3.3 70B) with 11 read-only tools: it never runs code written by the model. Why: [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md).
 - Limits: anonymous, 25 questions/day in total (max 5 per visitor); signed in with Hugging Face, 20/day billed to your own account. Each question is independent, max 500 characters.
 - How it was built, with the live diff against the course template: [`my-agents/`](my-agents/ROSTER.md).
 
@@ -23,7 +23,7 @@ hf-AI-agents-course/
 ├── brain/                        ← cheat sheets (CS) and lessons learned (LL), one per topic
 ├── my-agents/                    ← one folder per deployed agent: prompt, plan, notebook (ROSTER.md = the index)
 ├── probe/                        ← raw model outputs of the experiments, as JSON
-└── requirements.txt
+└── requirements.txt              ← pinned Python packages
 ```
 
 | File | What it does |

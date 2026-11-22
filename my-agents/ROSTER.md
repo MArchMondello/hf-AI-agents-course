@@ -13,7 +13,7 @@ This repo documents it, and the notebook downloads it to compute the diff, so th
 
 | Agent | What it does | Live | Docs |
 | --- | --- | --- | --- |
-| First_agent_template | Repo guide: answers any question; cites Marco's [`brain/`](../brain/) notes. A `ToolCallingAgent` (Llama 3.3 70B, 8 read-only tools, no model-written code runs: [why](../brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md)) | [Space](https://huggingface.co/spaces/MArcoMondelloMBAMArch/First_Agent_Template) | [First_agent_template/](First_agent_template/) |
+| First_agent_template | AI Agents Course Companion: answers any question, cites the [`brain/`](../brain/) notes, describes the repo and its results. A `ToolCallingAgent` (Llama 3.3 70B, 11 read-only tools); no model-written code runs, see [1.8](../brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md) | [Space](https://huggingface.co/spaces/MArcoMondelloMBAMArch/First_Agent_Template) | [First_agent_template/](First_agent_template/) |
 
 ## How to add an agent
 
