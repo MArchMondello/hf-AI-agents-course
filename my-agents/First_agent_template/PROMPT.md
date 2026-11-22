@@ -22,7 +22,7 @@ The app and the repo must end up in my portfolio as an entry frontend deployed e
 ## Clarifications given while planning
 
 - The agent answers **any** question, not only about the `.env`: questions about what I learned are answered from my notes, the rest normally.
-- Layout: `my-agents/<Agent>/` holds only the original prompt, the plan and a notebook (link to the Space + the diff explained); an index `my-agents/ROASTER.md` lists the agents. The code lives **only** in the Space.
+- Layout: `my-agents/<Agent>/` holds only the original prompt, the plan and a notebook (link to the Space + the diff explained); an index `my-agents/ROSTER.md` lists the agents. The code lives **only** in the Space.
 - Cost: I pay for anonymous visitors, **25 questions/day in total**; with "Sign in with Hugging Face" the visitor pays, **20/day per username**.
 - `course_coverage()`: rule "moved on" (a unit is done when notes for a later chapter exist; the current unit counts half).
 - Privacy: the Space is linked openly from this repo: it is my portfolio.

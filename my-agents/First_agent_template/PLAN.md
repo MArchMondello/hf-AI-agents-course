@@ -14,7 +14,7 @@ Marco's public HF Space `<hf-user>/First_Agent_Template` (course Unit 1 exercise
 ```
 GitHub repo (public)                                   HF Space (public) = the ONLY home of the code
 my-agents/                                             app.py · Gradio_UI.py · prompts.yaml · README.md
-├── ROASTER.md           ← index: one row per agent     requirements.txt · tools/final_answer.py
+├── ROSTER.md           ← index: one row per agent     requirements.txt · tools/final_answer.py
 └── First_agent_template/                                tools/repo_core.py · tests/test_agent.py
     ├── PROMPT.md        ← Marco's original request     (history = the Space's own git log)
     ├── PLAN.md          ← this plan
@@ -24,7 +24,7 @@ my-agents/                                             app.py · Gradio_UI.py ·
             one markdown cell per change; a cell that runs repo_core.py
             in an isolated subprocess (zero LLM credit, no env vars)
 ```
-- Scalable: a new agent = a new folder `my-agents/<Agent>/` with the same three files + one row in `my-agents/ROASTER.md`.
+- Scalable: a new agent = a new folder `my-agents/<Agent>/` with the same three files + one row in `my-agents/ROSTER.md`.
 - **Working copy is ephemeral, outside the repo:** the session scratchpad. Space files are downloaded there, edited, tested, and uploaded as a PR on the Space (`create_commit(create_pr=True, parent_commit=…)`), then merged. No branch, nothing committed to GitHub except the three docs files + index. The empty placeholder `First_agent_template.txt` is replaced by them.
 - The diff in the notebook is **computed at run time**, so it can't go stale. Saved outputs show the diff as of the last run, with the Space commit sha printed.
 
@@ -57,7 +57,7 @@ Secrets: the Space keeps `HF_TOKEN` = the inference-only token. Uploading uses a
 - **WP0 (me):** download the Space files into the scratchpad; freeze the interfaces above.
 - **WP1 agent:** `repo_core.py` (stdlib) + its tests.
 - **WP2 agent:** `app.py`, `Gradio_UI.py`, `prompts.yaml`, front matter, requirements + the fake-model test.
-- **WP3 agent:** `my-agents/` docs: index `ROASTER.md`, `PROMPT.md`, `PLAN.md`, the notebook (live diff + explained changes + tool cell).
+- **WP3 agent:** `my-agents/` docs: index `ROSTER.md`, `PROMPT.md`, `PLAN.md`, the notebook (live diff + explained changes + tool cell).
 - **WP4 (me):** integration, a fresh-agent adversarial code review, fixes. Marco creates `HF_TOKEN_SPACE_WRITE`. Upload, build, live checks.
 - **WP5 agent:** LL 1.8, repo README "Live demo", 0.8 CS + `.env.example`, CLAUDE.md, anonymity scan, commit (push only if asked).
 
