@@ -70,6 +70,15 @@ Before going live, the repo guide agent went through two adversarial reviews (fa
 
 What I take from it: **on a public page, a `CodeAgent` needs a real sandbox**; who pays is decided in code before the model runs; pin the provider.
 
+## Helping others
+
+| Date | Contribution | Link |
+| --- | --- | --- |
+| 2026-11-22 | Diagnosed why the course's First Agent Template only answers "Error" (a provider 400 hidden by a UI crash) and proposed a 3-line fix to the template | [PR #789](https://huggingface.co/spaces/agents-course/First_agent_template/discussions/789) |
+| 2026-11-22 | Posted the cause and the fix where students reported the bug | [discussion #364](https://huggingface.co/spaces/agents-course/First_agent_template/discussions/364) |
+
+What I take from it: a fix for others needs a minimal diff, the evidence (logs, a reproduction) and a reply where people are looking. See [1.7](brain/1.7-LL-helping-others-upstream-fix.md).
+
 ## `brain/`: what I learned, in reusable form
 
 | # | Type | Topic |
