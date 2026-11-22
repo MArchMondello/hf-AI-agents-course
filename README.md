@@ -70,6 +70,17 @@ Before going live, the repo guide agent went through two adversarial reviews (fa
 
 What I take from it: **on a public page, a `CodeAgent` needs a real sandbox**; who pays is decided in code before the model runs; pin the provider.
 
+## Experiments: does the agent find the right note?
+
+The agent cited the wrong note for "What is the ReAct loop?". Instead of patching that question: 42 queries with their expected notes, plus 15 held-out ones written before tuning, old search vs new (BM25F), on a frozen copy of the notes:
+
+| Set | Old top-1 | New top-1 | Old top-3 | New top-3 | Lesson |
+| --- | --- | --- | --- | --- | --- |
+| Development (42) | 35 | **38** | 41 | **42** | [1.9](brain/1.9-LL-note-search-bm25-measured.md) |
+| Held-out exam (15) | 13 | **14** | 14 | **15** | [1.9](brain/1.9-LL-note-search-bm25-measured.md) |
+
+What I take from it: **measure before and after, and keep an exam you didn't study for**; rare words carry the meaning; finding the right note is not reading the right part of it.
+
 ## Helping others
 
 | Date | Contribution | Link |
@@ -101,6 +112,7 @@ What I take from it: a fix for others needs a minimal diff, the evidence (logs, 
 | [1.6](brain/1.6-CS-hf-space-first-agent.md) | CS | A Hugging Face Space: the First Agent Template, and why it only said "Error" |
 | [1.7](brain/1.7-LL-helping-others-upstream-fix.md) | LL | Helping others: an upstream fix, and the review that made it right |
 | [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md) | LL | A public agent: CodeAgent is not a sandbox, and who pays |
+| [1.9](brain/1.9-LL-note-search-bm25-measured.md) | LL | Note search, measured: BM25F, a held-out exam, and the right section |
 
 **CS** = cheat sheet (commands, workflows, errors → fixes). **LL** = lessons learned (an experiment and what it taught me).
 

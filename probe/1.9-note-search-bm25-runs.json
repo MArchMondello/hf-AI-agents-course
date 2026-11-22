@@ -1,0 +1,1431 @@
+{
+ "date": "2026-11-22",
+ "what": "Note search of the repo guide agent: old keyword count vs BM25F, on a frozen copy of brain/ (18 notes)",
+ "measure": "top-1 = the first result is an acceptable note; top-3 = an acceptable note is among the first three",
+ "old": "3 points per query word in the note name + 1 per word in the text; ties by raw counts",
+ "new": "BM25F: idf (rare words count more), fields name x3 / headings x2 / text x1, per-field length discount B = (0.75, 0.3, 0.3), K1 = 1.2, CamelCase/underscore split, plural folding, phrase bonus in titles",
+ "sets": {
+  "eval_set": "42 queries, used to design the ranking",
+  "holdout_set": "15 queries written before tuning (1 dropped: no note contains it); looked at once before the last change"
+ },
+ "space_commit": "678947c22c66cdf6a1691acad2034e8f106b3895",
+ "runs": {
+  "old-eval_set": {
+   "top1": 35,
+   "top3": 41,
+   "n": 42,
+   "rows": [
+    {
+     "q": "ReAct",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.4",
+      "0.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "ReAct loop",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.4",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "What is the ReAct loop?",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.4",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "ReAct vs chain of thought",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.2",
+      "1.4"
+     ],
+     "top1": true
+    },
+    {
+     "q": "ReAct agent",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.6",
+      "1.8",
+      "1.2"
+     ],
+     "top1": false
+    },
+    {
+     "q": "ReAct framework",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.6",
+      "1.0",
+      "1.4"
+     ],
+     "top1": false
+    },
+    {
+     "q": "ReAct pattern",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.4",
+      "1.0",
+      "0.3"
+     ],
+     "top1": false
+    },
+    {
+     "q": "Thought Action Observation",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.3",
+      "1.0",
+      "1.2"
+     ],
+     "top1": false
+    },
+    {
+     "q": "special tokens",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "0.8",
+      "1.4"
+     ],
+     "top1": true
+    },
+    {
+     "q": "How do I keep API keys out of a git repo?",
+     "expected": [
+      "0.5",
+      "0.8"
+     ],
+     "got": [
+      "0.4",
+      "0.5",
+      "0.8"
+     ],
+     "top1": false
+    },
+    {
+     "q": ".env secrets",
+     "expected": [
+      "0.8"
+     ],
+     "got": [
+      "0.8",
+      "0.7",
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "env file tokens",
+     "expected": [
+      "0.8"
+     ],
+     "got": [
+      "0.8",
+      "0.9",
+      "0.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "temperature",
+     "expected": [
+      "1.1"
+     ],
+     "got": [
+      "1.1",
+      "1.3",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "sandbox for code agents",
+     "expected": [
+      "1.5"
+     ],
+     "got": [
+      "1.5",
+      "1.8",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "executor_type e2b docker",
+     "expected": [
+      "1.5"
+     ],
+     "got": [
+      "1.5",
+      "1.8",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "What should I be mindful of when deploying a CodeAgent?",
+     "expected": [
+      "1.5",
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.0",
+      "1.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "is a CodeAgent safe on a public Space",
+     "expected": [
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.6",
+      "0.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "who pays OAuth quota",
+     "expected": [
+      "1.8"
+     ],
+     "got": [
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "tool calling agent",
+     "expected": [
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.4",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "chat template",
+     "expected": [
+      "1.4"
+     ],
+     "got": [
+      "1.4",
+      "1.0",
+      "1.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "persona",
+     "expected": [
+      "1.4"
+     ],
+     "got": [
+      "1.4",
+      "1.2",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "liar agent",
+     "expected": [
+      "1.2"
+     ],
+     "got": [
+      "1.2",
+      "1.6",
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "can a system prompt make an agent lie",
+     "expected": [
+      "1.2",
+      "1.3"
+     ],
+     "got": [
+      "1.3",
+      "1.8",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "prompt injection",
+     "expected": [
+      "1.3"
+     ],
+     "got": [
+      "1.3",
+      "1.5",
+      "1.4"
+     ],
+     "top1": true
+    },
+    {
+     "q": "stop sequence",
+     "expected": [
+      "1.0",
+      "1.3"
+     ],
+     "got": [
+      "1.0",
+      "1.3",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "invented observation",
+     "expected": [
+      "1.1",
+      "1.2"
+     ],
+     "got": [
+      "1.3",
+      "1.0",
+      "1.2"
+     ],
+     "top1": false
+    },
+    {
+     "q": "virtual environment",
+     "expected": [
+      "0.2"
+     ],
+     "got": [
+      "0.2",
+      "0.5",
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "venv activate",
+     "expected": [
+      "0.2"
+     ],
+     "got": [
+      "0.2",
+      "0.1",
+      "0.7"
+     ],
+     "top1": true
+    },
+    {
+     "q": "git commit push",
+     "expected": [
+      "0.4"
+     ],
+     "got": [
+      "0.4",
+      "0.5",
+      "1.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "fork and clone",
+     "expected": [
+      "0.4",
+      "0.7"
+     ],
+     "got": [
+      "0.4",
+      "0.7",
+      "0.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "markdown table",
+     "expected": [
+      "0.6"
+     ],
+     "got": [
+      "0.6",
+      "1.8",
+      "0.9"
+     ],
+     "top1": true
+    },
+    {
+     "q": "jupyter kernel notebook",
+     "expected": [
+      "0.7"
+     ],
+     "got": [
+      "0.7",
+      "0.9",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "status line",
+     "expected": [
+      "0.9"
+     ],
+     "got": [
+      "0.9",
+      "0.5",
+      "0.1"
+     ],
+     "top1": true
+    },
+    {
+     "q": "VS Code layout",
+     "expected": [
+      "0.9"
+     ],
+     "got": [
+      "0.9",
+      "0.4",
+      "0.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "Hugging Face Space only says Error",
+     "expected": [
+      "1.6"
+     ],
+     "got": [
+      "1.6",
+      "1.7",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "First Agent Template",
+     "expected": [
+      "1.6",
+      "1.7",
+      "1.8"
+     ],
+     "got": [
+      "1.4",
+      "1.6",
+      "1.8"
+     ],
+     "top1": false
+    },
+    {
+     "q": "open a pull request on Hugging Face",
+     "expected": [
+      "1.7"
+     ],
+     "got": [
+      "1.7",
+      "1.6",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "help others upstream fix",
+     "expected": [
+      "1.7"
+     ],
+     "got": [
+      "1.7",
+      "1.8",
+      "1.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "agent trace fibonacci",
+     "expected": [
+      "0.3"
+     ],
+     "got": [
+      "0.3",
+      "1.6",
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "bash pipes",
+     "expected": [
+      "0.1"
+     ],
+     "got": [
+      "0.1",
+      "0.9",
+      "0.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "gitignore privacy check before publishing",
+     "expected": [
+      "0.5"
+     ],
+     "got": [
+      "0.5",
+      "1.7",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "requirements.txt",
+     "expected": [
+      "0.5"
+     ],
+     "got": [
+      "0.5",
+      "0.2",
+      "0.8"
+     ],
+     "top1": true
+    }
+   ]
+  },
+  "new-eval_set": {
+   "top1": 38,
+   "top3": 42,
+   "n": 42,
+   "rows": [
+    {
+     "q": "ReAct",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.4",
+      "0.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "ReAct loop",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.4",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "What is the ReAct loop?",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.4",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "ReAct vs chain of thought",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.2",
+      "1.4"
+     ],
+     "top1": true
+    },
+    {
+     "q": "ReAct agent",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.4",
+      "0.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "ReAct framework",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.6",
+      "0.3",
+      "1.0"
+     ],
+     "top1": false
+    },
+    {
+     "q": "ReAct pattern",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.4",
+      "0.3",
+      "1.0"
+     ],
+     "top1": false
+    },
+    {
+     "q": "Thought Action Observation",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.2",
+      "1.4"
+     ],
+     "top1": true
+    },
+    {
+     "q": "special tokens",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "0.1",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "How do I keep API keys out of a git repo?",
+     "expected": [
+      "0.5",
+      "0.8"
+     ],
+     "got": [
+      "0.5",
+      "0.8",
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": ".env secrets",
+     "expected": [
+      "0.8"
+     ],
+     "got": [
+      "0.8",
+      "0.7",
+      "1.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "env file tokens",
+     "expected": [
+      "0.8"
+     ],
+     "got": [
+      "0.8",
+      "1.7",
+      "0.7"
+     ],
+     "top1": true
+    },
+    {
+     "q": "temperature",
+     "expected": [
+      "1.1"
+     ],
+     "got": [
+      "1.1",
+      "1.3",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "sandbox for code agents",
+     "expected": [
+      "1.5"
+     ],
+     "got": [
+      "1.5",
+      "1.8",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "executor_type e2b docker",
+     "expected": [
+      "1.5"
+     ],
+     "got": [
+      "1.5",
+      "1.8",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "What should I be mindful of when deploying a CodeAgent?",
+     "expected": [
+      "1.5",
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.5",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "is a CodeAgent safe on a public Space",
+     "expected": [
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.6",
+      "0.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "who pays OAuth quota",
+     "expected": [
+      "1.8"
+     ],
+     "got": [
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "tool calling agent",
+     "expected": [
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.0",
+      "1.4"
+     ],
+     "top1": true
+    },
+    {
+     "q": "chat template",
+     "expected": [
+      "1.4"
+     ],
+     "got": [
+      "1.4",
+      "1.6",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "persona",
+     "expected": [
+      "1.4"
+     ],
+     "got": [
+      "1.4",
+      "1.2",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "liar agent",
+     "expected": [
+      "1.2"
+     ],
+     "got": [
+      "1.2",
+      "1.3",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "can a system prompt make an agent lie",
+     "expected": [
+      "1.2",
+      "1.3"
+     ],
+     "got": [
+      "1.3",
+      "1.2",
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "prompt injection",
+     "expected": [
+      "1.3"
+     ],
+     "got": [
+      "1.3",
+      "1.5",
+      "1.4"
+     ],
+     "top1": true
+    },
+    {
+     "q": "stop sequence",
+     "expected": [
+      "1.0",
+      "1.3"
+     ],
+     "got": [
+      "0.3",
+      "1.0",
+      "1.3"
+     ],
+     "top1": false
+    },
+    {
+     "q": "invented observation",
+     "expected": [
+      "1.1",
+      "1.2"
+     ],
+     "got": [
+      "1.1",
+      "1.2",
+      "1.3"
+     ],
+     "top1": true
+    },
+    {
+     "q": "virtual environment",
+     "expected": [
+      "0.2"
+     ],
+     "got": [
+      "0.2",
+      "0.5",
+      "1.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "venv activate",
+     "expected": [
+      "0.2"
+     ],
+     "got": [
+      "0.2",
+      "0.1",
+      "0.7"
+     ],
+     "top1": true
+    },
+    {
+     "q": "git commit push",
+     "expected": [
+      "0.4"
+     ],
+     "got": [
+      "0.5",
+      "0.4",
+      "1.6"
+     ],
+     "top1": false
+    },
+    {
+     "q": "fork and clone",
+     "expected": [
+      "0.4",
+      "0.7"
+     ],
+     "got": [
+      "0.4",
+      "0.7",
+      "0.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "markdown table",
+     "expected": [
+      "0.6"
+     ],
+     "got": [
+      "0.6",
+      "1.8",
+      "0.9"
+     ],
+     "top1": true
+    },
+    {
+     "q": "jupyter kernel notebook",
+     "expected": [
+      "0.7"
+     ],
+     "got": [
+      "0.7",
+      "0.9",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "status line",
+     "expected": [
+      "0.9"
+     ],
+     "got": [
+      "0.9",
+      "0.5",
+      "0.1"
+     ],
+     "top1": true
+    },
+    {
+     "q": "VS Code layout",
+     "expected": [
+      "0.9"
+     ],
+     "got": [
+      "0.9",
+      "0.4",
+      "0.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "Hugging Face Space only says Error",
+     "expected": [
+      "1.6"
+     ],
+     "got": [
+      "1.6",
+      "1.7",
+      "0.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "First Agent Template",
+     "expected": [
+      "1.6",
+      "1.7",
+      "1.8"
+     ],
+     "got": [
+      "1.6",
+      "1.4",
+      "1.7"
+     ],
+     "top1": true
+    },
+    {
+     "q": "open a pull request on Hugging Face",
+     "expected": [
+      "1.7"
+     ],
+     "got": [
+      "1.7",
+      "1.6",
+      "0.4"
+     ],
+     "top1": true
+    },
+    {
+     "q": "help others upstream fix",
+     "expected": [
+      "1.7"
+     ],
+     "got": [
+      "1.7",
+      "1.6",
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "agent trace fibonacci",
+     "expected": [
+      "0.3"
+     ],
+     "got": [
+      "0.3",
+      "1.5",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "bash pipes",
+     "expected": [
+      "0.1"
+     ],
+     "got": [
+      "0.1",
+      "0.9",
+      "0.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "gitignore privacy check before publishing",
+     "expected": [
+      "0.5"
+     ],
+     "got": [
+      "0.5",
+      "0.4",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "requirements.txt",
+     "expected": [
+      "0.5"
+     ],
+     "got": [
+      "0.5",
+      "0.2",
+      "0.8"
+     ],
+     "top1": true
+    }
+   ]
+  },
+  "old-holdout_set": {
+   "top1": 13,
+   "top3": 14,
+   "n": 15,
+   "rows": [
+    {
+     "q": "Reason and Act",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.7"
+     ],
+     "top1": true
+    },
+    {
+     "q": "what is an agent",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.6",
+      "1.8",
+      "1.2"
+     ],
+     "top1": false
+    },
+    {
+     "q": "chmod 600 env file",
+     "expected": [
+      "0.8"
+     ],
+     "got": [
+      "0.8",
+      "0.9",
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "HF_TOKEN secret of a Space",
+     "expected": [
+      "0.8",
+      "1.6",
+      "1.8"
+     ],
+     "got": [
+      "1.6",
+      "1.8",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "LocalPythonExecutor escape",
+     "expected": [
+      "1.5",
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.0",
+      "1.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "the prompt asks, the code guarantees",
+     "expected": [
+      "1.4"
+     ],
+     "got": [
+      "0.9",
+      "1.4",
+      "0.2"
+     ],
+     "top1": false
+    },
+    {
+     "q": "WeatherNow tool Open-Meteo",
+     "expected": [
+      "1.4"
+     ],
+     "got": [
+      "1.4",
+      "1.0",
+      "1.7"
+     ],
+     "top1": true
+    },
+    {
+     "q": "proximity beats position",
+     "expected": [
+      "1.3"
+     ],
+     "got": [
+      "1.3",
+      "1.4",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "Ollama qwen local model",
+     "expected": [
+      "1.0",
+      "1.1"
+     ],
+     "got": [
+      "1.0",
+      "1.4",
+      "1.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "PR 789",
+     "expected": [
+      "1.6",
+      "1.7",
+      "1.8"
+     ],
+     "got": [
+      "1.7",
+      "1.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "anonymous quota per visitor",
+     "expected": [
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.0",
+      "1.3"
+     ],
+     "top1": true
+    },
+    {
+     "q": "deactivate venv",
+     "expected": [
+      "0.2"
+     ],
+     "got": [
+      "0.2",
+      "0.1",
+      "0.7"
+     ],
+     "top1": true
+    },
+    {
+     "q": "gh auth login",
+     "expected": [
+      "0.4"
+     ],
+     "got": [
+      "0.4",
+      "1.8",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "Blaxel E2B Modal",
+     "expected": [
+      "1.5"
+     ],
+     "got": [
+      "1.5",
+      "1.8",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "dummy agent",
+     "expected": [
+      "1.1"
+     ],
+     "got": [
+      "1.1",
+      "1.8",
+      "1.2"
+     ],
+     "top1": true
+    }
+   ]
+  },
+  "new-holdout_set": {
+   "top1": 14,
+   "top3": 15,
+   "n": 15,
+   "rows": [
+    {
+     "q": "Reason and Act",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "0.8",
+      "1.7"
+     ],
+     "top1": true
+    },
+    {
+     "q": "what is an agent",
+     "expected": [
+      "1.0"
+     ],
+     "got": [
+      "1.0",
+      "1.8",
+      "1.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "chmod 600 env file",
+     "expected": [
+      "0.8"
+     ],
+     "got": [
+      "0.8",
+      "0.9",
+      "1.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "HF_TOKEN secret of a Space",
+     "expected": [
+      "0.8",
+      "1.6",
+      "1.8"
+     ],
+     "got": [
+      "1.6",
+      "1.8",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "LocalPythonExecutor escape",
+     "expected": [
+      "1.5",
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.5",
+      "1.0"
+     ],
+     "top1": true
+    },
+    {
+     "q": "the prompt asks, the code guarantees",
+     "expected": [
+      "1.4"
+     ],
+     "got": [
+      "1.4",
+      "0.2",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "WeatherNow tool Open-Meteo",
+     "expected": [
+      "1.4"
+     ],
+     "got": [
+      "1.4",
+      "1.0",
+      "1.1"
+     ],
+     "top1": true
+    },
+    {
+     "q": "proximity beats position",
+     "expected": [
+      "1.3"
+     ],
+     "got": [
+      "1.3",
+      "1.4",
+      "1.2"
+     ],
+     "top1": true
+    },
+    {
+     "q": "Ollama qwen local model",
+     "expected": [
+      "1.0",
+      "1.1"
+     ],
+     "got": [
+      "0.3",
+      "1.0",
+      "1.5"
+     ],
+     "top1": false
+    },
+    {
+     "q": "PR 789",
+     "expected": [
+      "1.6",
+      "1.7",
+      "1.8"
+     ],
+     "got": [
+      "1.7",
+      "1.6"
+     ],
+     "top1": true
+    },
+    {
+     "q": "anonymous quota per visitor",
+     "expected": [
+      "1.8"
+     ],
+     "got": [
+      "1.8",
+      "1.4",
+      "1.3"
+     ],
+     "top1": true
+    },
+    {
+     "q": "deactivate venv",
+     "expected": [
+      "0.2"
+     ],
+     "got": [
+      "0.2",
+      "0.1",
+      "0.7"
+     ],
+     "top1": true
+    },
+    {
+     "q": "gh auth login",
+     "expected": [
+      "0.4"
+     ],
+     "got": [
+      "0.4",
+      "1.8",
+      "1.5"
+     ],
+     "top1": true
+    },
+    {
+     "q": "Blaxel E2B Modal",
+     "expected": [
+      "1.5"
+     ],
+     "got": [
+      "1.5",
+      "1.8",
+      "0.8"
+     ],
+     "top1": true
+    },
+    {
+     "q": "dummy agent",
+     "expected": [
+      "1.1"
+     ],
+     "got": [
+      "1.1",
+      "0.7",
+      "1.3"
+     ],
+     "top1": true
+    }
+   ]
+  }
+ }
+}
