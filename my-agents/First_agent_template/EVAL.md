@@ -100,7 +100,7 @@ Each finding: what it does · the evidence · where it comes from in the code (S
 | 5 | "nothing not in the tool output" for every cited answer | F5 | prompt | small, measured by hand |
 | 6 | the search bench gets the C3 and Q8 queries; then synonyms or embeddings | F3 | search | medium |
 
-After each change: re-run probe 1.10 (~2.4 M input tokens), compare with the scorecard above, add a line to the log.
+After each change: deploy it with [`tools/deploy_space.py`](../../tools/deploy_space.py) (dry run first), re-run probe 1.10 with the new `SPACE_SHA` (~2.4 M input tokens), compare with the scorecard above, add a line to the log.
 
 ## 4. Log
 

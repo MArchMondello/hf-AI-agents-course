@@ -24,7 +24,8 @@ hf-AI-agents-course/
 ├── certificates/                 ← course certificates, one per unit passed
 ├── my-agents/                    ← one folder per deployed agent: prompt, plan, notebook (ROSTER.md = the index)
 ├── probe/                        ← raw model outputs of the experiments, as JSON
-├── tools/run_cells.py            ← runs chosen notebook cells from the terminal, found by their first line
+├── tools/                        ← reusable scripts: run_cells.py (notebook cells from the terminal),
+│                                   deploy_space.py (change a Space: working copy → diff → one commit)
 └── requirements.txt              ← pinned Python packages
 ```
 

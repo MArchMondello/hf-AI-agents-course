@@ -19,5 +19,5 @@ This repo documents it, and the notebook downloads it to compute the diff, so th
 ## How to add an agent
 
 1. Create `my-agents/<Agent>/` with `PROMPT.md` (the request) and `PLAN.md` (the approved plan).
-2. Build the agent where it runs; copy `First_agent_template.ipynb` to `<Agent>.ipynb` and change its parameters cell (`UPSTREAM`, `SPACE`, the two shas).
+2. Build the agent where it runs (to change it: [`tools/deploy_space.py`](../tools/deploy_space.py), `get` → edit → `put` → `put --commit`); copy `First_agent_template.ipynb` to `<Agent>.ipynb` and change its parameters cell (`UPSTREAM`, `SPACE`, the two shas).
 3. Add one row to the table above.
