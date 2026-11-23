@@ -6,7 +6,7 @@
 | --- | --- |
 | Agent | [Space](https://huggingface.co/spaces/MArcoMondelloMBAMArch/First_Agent_Template) @ `03d5d79` · `ToolCallingAgent` · Llama 3.3 70B (Novita) · temperature 0.5 · max 4 steps |
 | Notes it reads | this repo's `brain/` @ `34ddd1a` (frozen for the probe) |
-| How to re-measure | [the notebook](First_agent_template.ipynb), section 5: parameters → collect (spends credit) → measure (free) |
+| How to re-measure | [the notebook](First_agent_template.ipynb), section 5: parameters → collect (spends credit) → measure (free); from the terminal, [`tools/run_cells.py`](../../tools/run_cells.py) (the command is in section 5) |
 
 ## 1. Scorecard (baseline A, 23 Nov 2026)
 
