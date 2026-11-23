@@ -14,3 +14,6 @@ CLAUDE.md
 
 # Official HF course notebooks (separate clone, not our code)
 agents-course/
+
+# Windows download marks (a copy from Windows to WSL adds them; they hold the download URL)
+*:Zone.Identifier

@@ -10,7 +10,7 @@ Paid engines (Claude API, Hugging Face Inference API) are optional, one line awa
 **[Try it on Hugging Face Spaces](https://huggingface.co/spaces/MArcoMondelloMBAMArch/First_Agent_Template)**: ask it anything. Questions about agents, LLMs or dev setup are answered from this repo's [`brain/`](brain/) notes, with a link to the note; it can also describe the repo and its results; every answer ends with a live signature (course coverage, notes, experiments, notebooks, stars).
 
 - A smolagents `ToolCallingAgent` (Llama 3.3 70B) with 11 read-only tools: it never runs code written by the model. Why: [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md).
-- Limits: anonymous, 25 questions/day in total (max 5 per visitor); signed in with Hugging Face, 20/day billed to your own account. Each question is independent, max 500 characters.
+- Limits: anonymous, 25 questions/day in total (max 5 per visitor); signed in with Hugging Face, 25/day billed to your own account. Each question is independent, max 500 characters.
 - How it was built, with the live diff against the course template: [`my-agents/`](my-agents/ROSTER.md).
 
 ## What's inside
@@ -21,6 +21,7 @@ hf-AI-agents-course/
 ├── 0.onboarding.ipynb            ← first agent: smolagents CodeAgent on local Qwen, its guards and sandboxes
 ├── 1.weather-agent-lab.ipynb     ← an agent from scratch, up to a real weather tool and a hand-made agent loop
 ├── brain/                        ← cheat sheets (CS) and lessons learned (LL), one per topic
+├── certificates/                 ← course certificates, one per unit passed
 ├── my-agents/                    ← one folder per deployed agent: prompt, plan, notebook (ROSTER.md = the index)
 ├── probe/                        ← raw model outputs of the experiments, as JSON
 └── requirements.txt              ← pinned Python packages
@@ -140,6 +141,12 @@ cp .env.example .env
 
 Then open the notebooks (`0.onboarding.ipynb`, `1.weather-agent-lab.ipynb`) in VS Code or Jupyter and pick the `.venv` kernel.
 `BACKEND = "local"` needs nothing else. For `"claude"` or `"HF"`, fill in `ANTHROPIC_API_KEY` or `HF_TOKEN_READ` in `.env` ([`.env.example`](.env.example) lists every name). The `.env` can stay in the repo root (git-ignored) or move to any parent folder, since `load_dotenv()` searches upwards. Mine lives one level up, outside every repo: see [0.8](brain/0.8-CS-env-secrets.md).
+
+## Certificates
+
+| Date | Certificate |
+| --- | --- |
+| 2026-11-23 | [Unit 1: Fundamentals of Agents](certificates/unit1-fundamentals.webp), Hugging Face Agents Course |
 
 ## About me
 
