@@ -1,12 +1,13 @@
 # My agents — roster
 
-Every agent I build has **one folder** here, with the same three files:
+Every agent I build has **one folder** here, with the same files:
 
 | File | What it holds |
 | --- | --- |
 | `PROMPT.md` | the original request, verbatim |
 | `PLAN.md` | the approved plan |
 | `<Agent>.ipynb` | the live diff against the template it started from, and one explanation per change |
+| `EVAL.md` | the assessment: what it gets wrong, where in the code, what to try; numbers from a probe (once it has one) |
 
 The code itself lives **only** where the agent runs (a Hugging Face Space): its git history is the record.
 This repo documents it, and the notebook downloads it to compute the diff, so the docs cannot go stale.

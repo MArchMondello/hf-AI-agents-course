@@ -82,6 +82,19 @@ The agent cited the wrong note for "What is the ReAct loop?". Instead of patchin
 
 What I take from it: **measure before and after, and keep an exam you didn't study for**; rare words carry the meaning; finding the right note is not reading the right part of it.
 
+## Experiments: does the agent know what it doesn't know?
+
+I used the Companion while taking the Unit 1 quiz: confident answers to the wrong question, each with a link to a note. Instead of trusting the anecdote: 14 public questions with the expected behaviour (cite the right note, read both notes, or say "my notes don't cover this"), plus the quiz questions as a private set, 3 variants, 216 runs on frozen notes:
+
+| Behaviour | As deployed | + 1 sentence in the prompt | + match strength in the search |
+| --- | --- | --- | --- |
+| No note answers → says so, without a source | **0/18** | 3/18 | 1/18 |
+| No note answers → cites a note as if it answered | **11/18** | 9/18 | 10/18 |
+| One note answers → cites the right one | 15/18 | 15/18 | 15/18 |
+| Runs that opened two notes | **0/72** | 0/72 | 0/72 |
+
+What I take from it: **an eval is a checklist of expected behaviours, not a demo**; a prompt rule can't fire on a gap the model doesn't see; the meter is code, so read the answers behind every surprising number (here it flipped a conclusion). Method: [1.10](brain/1.10-CS-evals-measuring-an-agent.md). What to fix, with the causes in the code: [`EVAL.md`](my-agents/First_agent_template/EVAL.md).
+
 ## Helping others
 
 | Date | Contribution | Link |
@@ -114,6 +127,7 @@ What I take from it: a fix for others needs a minimal diff, the evidence (logs, 
 | [1.7](brain/1.7-LL-helping-others-upstream-fix.md) | LL | Helping others: an upstream fix, and the review that made it right |
 | [1.8](brain/1.8-LL-public-agent-codeagent-is-not-a-sandbox.md) | LL | A public agent: CodeAgent is not a sandbox, and who pays |
 | [1.9](brain/1.9-LL-note-search-bm25-measured.md) | LL | Note search, measured: BM25F, a held-out exam, and the right section |
+| [1.10](brain/1.10-CS-evals-measuring-an-agent.md) | CS | Evals: does the agent know what it doesn't know? |
 
 **CS** = cheat sheet (commands, workflows, errors → fixes). **LL** = lessons learned (an experiment and what it taught me).
 
