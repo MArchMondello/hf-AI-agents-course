@@ -118,7 +118,7 @@ What I take from it: a fix for others needs a minimal diff, the evidence (logs, 
 | [0.6](brain/0.6-CS-markdown.md) | CS | Markdown |
 | [0.7](brain/0.7-CS-course-notebooks-jupyter.md) | CS | Course notebooks in Jupyter |
 | [0.8](brain/0.8-CS-env-secrets.md) | CS | Secrets in a `.env` file, shared by all projects |
-| [0.9](brain/0.9-CS-ide-claude-code-statusline.md) | CS | My IDE: VS Code on WSL, Claude Code and its status line |
+| [0.9](brain/0.9-CS-ide-claude-code-statusline.md) | CS | My IDE: VS Code on WSL, Claude Code, its status line and Remote Control from the phone |
 | [1.0](brain/1.0-CS-agents.md) | CS | What an agent is |
 | [1.1](brain/1.1-LL-dummy-agent-temperature.md) | LL | Temperature, memory and invented Observations |
 | [1.2](brain/1.2-LL-the-liar-agent.md) | LL | The liar agent |
