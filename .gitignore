@@ -10,7 +10,10 @@ __pycache__/
 
 # Private notes and local Claude Code settings (safety net)
 CLAUDE.md
-.claude/
+.claude/*
+# ...except the shared project hooks (git pull on main at session start)
+!.claude/settings.json
+!.claude/hooks/
 
 # Official HF course notebooks (separate clone, not our code)
 agents-course/
